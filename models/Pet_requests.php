@@ -35,7 +35,7 @@ class Pet_requests extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'description', 'missing_date', 'user_id', 'status_id'], 'required'],
-            [['description', 'admin-message'], 'string'],
+            [['description', 'admin_message'], 'string'],
             [['missing_date'], 'safe'],
             [['user_id', 'status_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
@@ -53,7 +53,7 @@ class Pet_requests extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
-            'admin-message' => 'Admin Message',
+            'admin_message' => 'Admin Message',
             'missing_date' => 'Missing Date',
             'user_id' => 'User ID',
             'status_id' => 'Status ID',
