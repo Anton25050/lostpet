@@ -58,11 +58,14 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
+       if ($this->request->isPost) {
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+       if($model->load($this->request->post())) {
+        $model->role_id = Role::USER_ROLE_ID;
+        if ($model->save()) {
+            return $this->redirect('/site/index');
+        }
+       }
         } else {
             $model->loadDefaultValues();
         }
