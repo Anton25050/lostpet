@@ -66,7 +66,7 @@ class Pet_requestsSearch extends Pet_requests
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'admin-message', $this->admin_message]);
+            ->andFilterWhere(['like', 'admin_message', $this->admin_message]);
 
         return $dataProvider;
     }

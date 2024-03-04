@@ -7,7 +7,7 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var app\models\ReportSearch $searchModel */
+/** @var app\models\Pet_requestsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Reports';
@@ -30,10 +30,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'number',
+            'id',
             'description:ntext',
-            'admin_message:ntext',
             'user',
+            [
+                'attribute'=> 'admin_message',
+                'content' => function ($admin_message) {
+                    $html = Html::beginForm(['update', 'id' => $admin_message->id]);
+                    $html .= Html::activeDropDownList($admin_message, 'admin_message', [
+                        1 => 'кошка потеряна',
+                        2=> 'кошка найдена',
+                    ]
+                    );
+                    $html .= Html::endForm();
+                }
+            ],
             [
                 'attribute' => 'status',
                 'content' => function ($report) {
@@ -53,6 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     );
                     $html .= Html::submitButton('Подтвердить', ['class' => 'btn btn-link']);
+                
                     $html .= Html::endForm();
                     return $html;
                 }

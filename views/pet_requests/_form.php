@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'missing_date')->textInput(['type' => 'date']) ?>
 
+    <?= $form->field($model, 'admin_message')->textarea(['rows'=> 6]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
