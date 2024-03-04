@@ -16,7 +16,7 @@ use Yii;
  * @property Pet_Requests[] $petRequests
  * @property Role $role
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -55,6 +55,15 @@ class User extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function login($name, $password) {
+        $user = static::find()->where(['name' =>$name])->one();
+        if ($user && $user->validatePassword($password)) {
+            return $user;
+        }
+
+        return null;
+    }
+
     /**
      * Gets query for [[PetRequests]].
      *
@@ -74,4 +83,75 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Role::class, ['id' => 'role_id']);
     }
+    public static function findIdentity($id)
+    {
+        return static::find()->where(['id' => $id])->one();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        foreach (self::$users as $user) {
+            if ($user['accessToken'] === $token) {
+                return new static($user);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $name
+     * @return static|null
+     */
+    public static function findByUsername($name)
+    {
+        foreach (self::$users as $user) {
+            if (strcasecmp($user['name'], $name) === 0) {
+                return new static($user);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAuthKey()
+    {
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->null;
+    }
+
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return $this->password === $password;
+    }
+
 }

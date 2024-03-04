@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Role;
+use app\models\UserRegister;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -57,12 +58,15 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        $model = new UserRegister();
+       
+    if ($this->request->isPost) {
+       if($model->load($this->request->post())) {
+        $model->role_id = Role::USER_ROLE_ID;
+        if ($model->save()) {
+            return $this->redirect('/site/login');
+        }
+       }
         } else {
             $model->loadDefaultValues();
         }
