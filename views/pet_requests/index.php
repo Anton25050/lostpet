@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\models\Pet_requestsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Pet Requests';
+$this->title = 'Объявления по животным';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pet-requests-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Pet Requests', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать новую заявку', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
+            'admin_message:ntext',
             'missing_date',
             'user',
             'status',

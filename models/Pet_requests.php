@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property string $description
- * @property string|null $admin-message
+ * @property string|null $admin_message
  * @property string $missing_date
  * @property int $user_id
  * @property int $status_id
