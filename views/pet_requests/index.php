@@ -32,10 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
-            'admin_message:ntext',
             'missing_date',
-            //'user_id',
-            //'status_id',
+            'user',
+            'status',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Pet_requests $model, $key, $index, $column) {

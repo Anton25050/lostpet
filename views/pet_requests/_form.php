@@ -16,13 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'admin_message')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'missing_date')->textInput() ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
-    <?= $form->field($model, 'status_id')->textInput() ?>
+    <?= $form->field($model, 'missing_date')->textInput(['type' => 'date']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

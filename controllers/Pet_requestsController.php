@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Pet_requests;
 use app\models\Pet_requestsSearch;
 use yii\web\Controller;
+use app\models\User;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -38,15 +39,29 @@ class Pet_requestsController extends Controller
      */
     public function actionIndex()
     {
+        $user = User::getInstance();
+        if (!$user) {
+            return $this->goHome();
+        }
         $searchModel = new Pet_requestsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = $searchModel->search($this->request->queryParams, $user->id);
 
-        return $this->render('index', [
+        if($user->isAdmin()) {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+        
+
+        return $this->render('index_admin', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
+        $dataProvider = $searchModel->search($this->request->queryParams, $user->id);
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+}
     /**
      * Displays a single Pet_requests model.
      * @param int $id ID
