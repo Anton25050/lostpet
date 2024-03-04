@@ -16,7 +16,7 @@ use Yii;
  * @property Pet_Requests[] $petRequests
  * @property Role $role
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -55,6 +55,15 @@ class User extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function login($name, $password) {
+        $user = static::find()->where(['name' =>$name])->one();
+        if ($user && $user->validatePassword($password)) {
+            return $user;
+        }
+
+        return null;
+    }
+
     /**
      * Gets query for [[PetRequests]].
      *
@@ -76,7 +85,7 @@ class User extends \yii\db\ActiveRecord
     }
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return static::find()->where(['id' => $id])->one();
     }
 
     /**
@@ -96,13 +105,13 @@ class User extends \yii\db\ActiveRecord
     /**
      * Finds user by username
      *
-     * @param string $login
+     * @param string $name
      * @return static|null
      */
-    public static function findByUsername($login)
+    public static function findByUsername($name)
     {
         foreach (self::$users as $user) {
-            if (strcasecmp($user['login'], $login) === 0) {
+            if (strcasecmp($user['name'], $name) === 0) {
                 return new static($user);
             }
         }
@@ -123,7 +132,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getAuthKey()
     {
-        return $this->null;
+        return null;
     }
 
     /**
