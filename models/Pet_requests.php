@@ -53,7 +53,7 @@ class Pet_requests extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'description' => 'Description',
-            'admin-message' => 'Admin Message',
+            'admin_message' => 'Admin Message',
             'missing_date' => 'Missing Date',
             'user_id' => 'User ID',
             'status_id' => 'Status ID',
