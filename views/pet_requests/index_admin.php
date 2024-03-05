@@ -10,16 +10,16 @@ use yii\widgets\Pjax;
 /** @var app\models\Pet_requestsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Reports';
+$this->title = 'Заявки';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="report-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+    <!-- <p>
         <?= Html::a('Create Report', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    </p> -->
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
