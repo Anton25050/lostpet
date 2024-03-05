@@ -70,6 +70,7 @@ class Pet_requestsController extends Controller
      */
     public function actionView($id)
     {
+        return $this->redirect('index');
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

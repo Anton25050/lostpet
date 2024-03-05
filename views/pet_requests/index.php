@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\i18n\Formatter;
 
 /** @var yii\web\View $this */
 /** @var app\models\Pet_requestsSearch $searchModel */
@@ -32,7 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description:ntext',
-            'admin_message:ntext',
+            [
+                'attribute' => 'admin_message',
+                'content' => function ($model) {
+                    return $model->admin_message ?? 'Нет информации';
+                }
+            ],
             'missing_date',
             'user',
             'status',
