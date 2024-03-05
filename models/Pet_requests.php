@@ -60,6 +60,13 @@ class Pet_requests extends \yii\db\ActiveRecord
         ];
     }
 
+    // public function __get($name) {
+    //     if ($name === 'admin_message_custom') {
+    //         return $this->admin_message ?? 'Нет информации';
+    //     }
+    //     return parent::__get($name);
+    // }
+
     /**
      * Gets query for [[Status]].
      *

@@ -34,15 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'user',
             [
-                'attribute'=> 'admin_message',
+                'attribute'=> 'admin_message_custom',
                 'content' => function ($admin_message) {
                     $html = Html::beginForm(['update', 'id' => $admin_message->id]);
-                    $html .= Html::activeDropDownList($admin_message, 'admin_message', [
-                        1 => 'кошка потеряна',
-                        2=> 'кошка найдена',
-                    ]
-                    );
+                    $html .= Html::activeTextarea($admin_message, 'admin_message');
+                    $html .= Html::submitButton('Сообщить', ['class' => 'btn btn-link']);
                     $html .= Html::endForm();
+                    return $html;
                 }
             ],
             [
