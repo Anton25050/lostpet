@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Report;
+use app\models\Status;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -24,6 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -32,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'description:ntext',
+            'status',
             'user',
             [
                 'attribute'=> 'admin_message_custom',
@@ -47,28 +51,52 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'content' => function ($report) {
                     $html = Html::beginForm(['update', 'id' => $report->id]);
-                    $html .= Html::activeDropDownList($report, 'status_id',
-                        [
-                            2 => 'Принята',
-                            3 => 'Отклонена'
-                        ],
-                        [
-                            'prompt' => [
-                                'text' => 'В обработке',
-                                'options' => [
-                                    'style' => 'display:none'
+
+                    if ($report->status_id == Status::NEW_STATUS_ID) {
+                        $html .= Html::activeDropDownList($report, 'status_id',
+                            [
+                                2 => 'Принята',
+                                3 => 'Отклонена'
+                            ],
+                            [
+                                'prompt' => [
+                                    'text' => 'В обработке',
+                                    'options' => [
+                                        'style' => 'display:none'
+                                    ]
                                 ]
                             ]
+                        );
+                        $html .= Html::submitButton('Подтвердить', ['class' => 'btn btn-link']);
+                    } elseif ($report->status_id == Status::APPROVED_STATUS_ID) { 
+
+                    $html .= Html::activeDropDownList($report, 'status_id',
+                    [
+                        4 => 'Найден',
+                        5 => 'Не найден'
+                    ],
+                    [
+                        'prompt' => [
+                            'text' => 'Принята',
+                            'options' => [
+                                'style' => 'display:none'
+                            ]
                         ]
-                    );
-                    $html .= Html::submitButton('Подтвердить', ['class' => 'btn btn-link']);
+                    ]
+                );
+                $html .= Html::submitButton('Подтвердить', ['class' => 'btn btn-link']);
+            }
+                    
                 
                     $html .= Html::endForm();
                     return $html;
                 }
             ],
         ],
-    ]); ?>
+    ]); 
+    
+
+    ?>
 
     <?php Pjax::end(); ?>
 
