@@ -10,15 +10,15 @@ $this->title = 'Lostpet';
   max-width: 18%;
   height: auto;
   position: relative;
-  left: 900px;
-  top: -250px;
+  left: 8px;
+  top: -10px;
 }
 .img2 {
   display: inline-block;
   max-width: 80%;
   height: auto;
   position: relative;
-  left: 200px;   
+  left: 130px;   
   top: 7px;
 }
 .img3 {
@@ -57,20 +57,22 @@ display: inline-block;
     }
     .mem {
     background-size: auto;
-    background: #C0C0C0;
+    background: #F0E68C;
     border-radius: 5px;
     }
 </style>
 <div class="container pos">
   <span class="fs-1 fw-bolder"><span class="text-danger">Lost</span><span class="text-black">pet</span></span>
-</div>
-    <div class='container pos '>
+  <div class="img"><img src="web\images\123.png" class='img-fluid' alt="..."></div>  
+        </div>
+
+    <div class='mb-5 container pos '>
         <div class='fs-6 text-muted text-wrap' style="width: 25rem;">Найдем и ликвидируем</div>
     </div>
         <div class='container pos'>
         <div class="img2"><img src="web\images\1.jpg" class='img-thumbnail' alt="..."></div>  
         </div>
-            <div class="container pos">
+            <div class=" mt-5 mb-5 container pos">
             <div class='fs-3 fw-semibold'>О нас</div>
     <div class="row align-items-start">
 
@@ -81,33 +83,20 @@ display: inline-block;
         Активные администраторы сайта    
         </div>
         </div>
-        <div class="img3"><img src="web\images\invalid.png" class='img-fluid' alt="...">
-    </div>
-        <div class="img4"><img src="web\images\test.png" class='img-fluid' alt="...">
-    </div>
-        <div class="img5"><img src="web\images\park.png" class='img-fluid' alt="...">
-    </div> 
         <div class="col-5 tech">
         <div class="text-muted text-wrap" style="width: 13rem;">
-        Оплата картой
-        Вызов врача на дом
-        Для детей
-        </div>
-        </div>
-        <div class="col tech">
-        <div class="text-muted text-wrap" style="width: 13rem;">
-        Анонимное обследование
-        Массаж
+        Найдено 116 питомца за 14 месяцев
+        Работа в многих городах
         </div>
         </div>
     </div>
     </div>
-        <div class='container pos'>
-        <div class='fs-3 fw-semibold'>Наши преимущества</div>
-        <div class="row align-items-center bg-light" style='width:65rem; border-radius: 8px'>
-            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>Широкий спектр услуг.</span>Медицинский центр работает в формате универсальной семейной клиники. В сферу нашей деятельности входят все виды медицинской помощи: диагностика, лечение, восстановление и профилактика.</p>
-            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>Профессионализм и большой опыт работы.</span>Прием пациентов ведут квалифицированные врачи, за плечами которых длительная практика и широкие знания в своей сфере. В штате медицинских центров работают врачи высшей категории, 40 кандидатов медицинских наук, 4 доктора медицинских наук и 2 профессора.</p>
-            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>Современное оборудование.</span>Благодаря хорошему оснащению клиники мы предлагаем пациентам разные виды исследований: КТ, МРТ, рентген, УЗИ, эндоскопия, функциональная диагностика, лабораторные анализы. В кабинетах специалистов есть необходимое оборудование, которое позволяет поставить диагноз уже во время приема.</p>
-            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>Высокий уровень обслуживания.</span>Мы стараемся сделать посещение медицинского центра комфортным для каждого пациента. Филиалы работают по удобному графику, у нас нет очередей. Персонал клиники — вежливые и деликатные сотрудники.</p>
+        <div class='mb-5 container pos'>
+        <div class='mb-2 fs-3 fw-semibold'>Наши преимущества</div>
+        <div class="row align-items-center mem" style='width:65rem; border-radius: 8px'>
+            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>Бесплатная подача заяки. </span>объявления публикуются на сайте бесплатно. Но мы рекомендуем воспользоваться платными опциями, которые серьезно повышают шансы быстрее вернуть пропавшего питомца домой.</p>
+            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>За наш счёт. </span>Мы проводим поиск за свой счёт для пенсионеров* и детей до 14 лет (из малообеспеченных семей). *Открываем поиск на сумму до 25% от общей стоимости.</p>
+            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>Какие гарантии, что мой питомец найдется? </span>Мы не можем гарантировать что ваш питомец обязательно найдется. Но накопленный нами опыт позволяет в несколько раз увеличить шансы на успешное завершение поисков.</p>
+            <p class= 'fs-6 text-wrap' style='width:60rem;'><span class='fw-bold'>Время работы. </span>Мы доступны с 08:00 до 24:00 по МСК. Если вы считаете, что поиск нужно начать немедленно, звоните в любое время. Мы всё понимаем.</p>
     </div>
     </div>

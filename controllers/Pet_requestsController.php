@@ -108,13 +108,33 @@ class Pet_requestsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+
+            if (
+                isset($model->getDirtyAttributes()["status_id"])
+                &&
+                in_array(
+                    $model->getDirtyAttributes()["status_id"],
+                    [Status::FOUNDED_STATUS_ID, Status::NOTFOUNDED_STATUS_ID]
+                )
+                &&
+                !$model->admin_message
+            ) {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['index']);
+
+        // return $this->render('update', [
+            // 'model' => $model,
+        // ]);
     }
 
 
